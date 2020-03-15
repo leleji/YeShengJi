@@ -16,7 +16,7 @@ Proxy:
 
   #如果要使用其他配置文件把下面代码新增到到要使用的配置文件Proxy下面
   - name: 🎶 网易云音乐解锁
-    type: http
+    type: socks5
     server: 106.52.127.72
     port: 19951
   #结束
