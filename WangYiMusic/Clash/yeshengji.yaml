@@ -13,20 +13,27 @@ dns:
     - 223.5.5.5
 
 Proxy:
+
+  #如果要使用其他配置文件把下面代码新增到到要使用的配置文件Proxy下面
   - name: 🎶 网易云音乐解锁
     type: http
     server: 106.52.127.72
     port: 19951
-
+  #结束
+  
 Proxy Group:
+
+  #如果要使用其他配置文件把下面代码新增到要使用的配置文件Proxy Group下面
   - name: 🎵 网易云音乐
     type: select
     proxies:
       - 🎶 网易云音乐解锁
       - DIRECT
-
+  #结束
+  
 Rule:
-  # Netease Music
+
+  # 如果要使用其他配置文件把下面代码新增到要使用的配置文件Rule下面
   - DOMAIN,apm3.music.163.com,🎵 网易云音乐
   - DOMAIN,apm.music.163.com,🎵 网易云音乐
   - DOMAIN,interface3.music.163.com,🎵 网易云音乐
@@ -51,6 +58,7 @@ Rule:
   - IP-CIDR,193.112.159.225/32,🎵 网易云音乐
   - IP-CIDR,223.252.199.66/32,🎵 网易云音乐
   - IP-CIDR,223.252.199.67/32,🎵 网易云音乐
-
+  #结束
+  
   # Final
   - MATCH,DIRECT
