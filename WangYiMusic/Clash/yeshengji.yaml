@@ -18,7 +18,7 @@ Proxy:
   - name: 🎶 网易云音乐解锁
     type: socks5
     server: 106.52.127.72
-    port: 19951
+    port: 19952
   #结束
   
 Proxy Group:
