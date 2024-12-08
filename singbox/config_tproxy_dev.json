@@ -26,7 +26,7 @@
    "servers": 
    [
      {"tag": "dns_direct", "address": "223.5.5.5", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
-     {"tag": "dns_proxy", "address": "tls://8.8.8.8", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🚀 节点选择"}
+     {"tag": "dns_proxy", "address": "tls://8.8.8.8", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🛜 Dns"}
    ],
    "rules": 
    [
@@ -51,6 +51,7 @@
 
   "outbounds": [
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": ["♻️ 自动选择", "🎯 全球直连","{all}"] },
+    { "tag": "🛜 Dns", "type": "selector", "outbounds": ["{all}"] },
     { "tag": "📹 YouTube", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择", "{all}"] },
     { "tag": "🤖 OpenAI", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择", "{all}"] },
     { "tag": "🍀 Google", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择","{all}"] },
