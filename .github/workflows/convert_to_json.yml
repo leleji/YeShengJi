@@ -21,8 +21,9 @@ jobs:
 
     - name: Convert BanAD.list to JSON
       run: |
-        # 初始化 BanAD.json 文件
+        # 初始化 BanAD.json 文件，加入 version 字段
         echo '{
+          "version": 1,
           "rules": [
             {
               "domain_keyword": [],
@@ -53,8 +54,9 @@ jobs:
 
     - name: Convert BanProgramAD.list to JSON
       run: |
-        # 初始化 BanProgramAD.json 文件
+        # 初始化 BanProgramAD.json 文件，加入 version 字段
         echo '{
+          "version": 1,
           "rules": [
             {
               "domain_keyword": [],
