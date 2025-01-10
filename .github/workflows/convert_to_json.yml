@@ -55,6 +55,6 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add singbox/rule/aa.json
-        git commit -m "Update aa.json with converted rules"
+        git add singbox/rule/aa.json BanAD.list # 确保新文件被追踪
+        git commit -m "Update aa.json with converted rules" || echo "No changes to commit"
         git push
