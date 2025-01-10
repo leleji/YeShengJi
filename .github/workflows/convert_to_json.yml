@@ -31,15 +31,15 @@ jobs:
           ]
         }' > aa.json
 
-        # 解析 BanAD.list 并填充模板
+        # 遍历 BanAD.list 并填充 JSON
         while IFS= read -r line; do
-          if [[ "$line" =~ ^\|\|.* ]]; then
+          if [[ "$line" =~ ^\|\| ]]; then
             # 处理 || 开头的行，提取为 domain_suffix
-            domain=$(echo "$line" | sed 's/||//;s/\^$//')
+            domain=$(echo "$line" | sed 's/||//;s/\^.*//')
             jq --arg domain "$domain" '.rules[0].domain_suffix += [$domain]' aa.json > tmp.json && mv tmp.json aa.json
-          elif [[ "$line" =~ ^@.* ]]; then
+          elif [[ "$line" =~ ^@ ]]; then
             # 处理 @ 开头的行，提取为 domain_keyword
-            domain=$(echo "$line" | sed 's/^@//;s/\^$//')
+            domain=$(echo "$line" | sed 's/@//;s/\^.*//')
             jq --arg domain "$domain" '.rules[0].domain_keyword += [$domain]' aa.json > tmp.json && mv tmp.json aa.json
           fi
         done < BanAD.list
