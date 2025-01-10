@@ -1,9 +1,9 @@
 name: Convert BanAD.list and BanProgramAD.list to JSON
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'  # 每天运行一次
+    - cron: '0 0 * * 0'  # 每周日执行一次
+  workflow_dispatch:
 
 jobs:
   convert:
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Fetch BanAD.list
+    - name: Fetch BanAD.list and BanProgramAD.list
       run: |
         # 下载 BanAD.list 和 BanProgramAD.list 文件
         curl -s https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list -o BanAD.list
@@ -26,24 +26,28 @@ jobs:
           "rules": [
             {
               "domain_keyword": [],
-              "domain_suffix": []
+              "domain_suffix": [],
+              "domain": [],
+              "ip_cidr": []
             }
           ]
         }' > BanAD.json
 
         # 遍历 BanAD.list 并填充 JSON
-        while IFS=, read -r type value; do
+        while IFS=, read -r type value extra; do
           # 去掉空行和注释行
           if [[ -z "$type" || "$type" == \#* ]]; then
             continue
           fi
 
           if [[ "$type" == "DOMAIN-KEYWORD" ]]; then
-            # 处理 DOMAIN-KEYWORD 类型
             jq --arg value "$value" '.rules[0].domain_keyword += [$value]' BanAD.json > tmp.json && mv tmp.json BanAD.json
           elif [[ "$type" == "DOMAIN-SUFFIX" ]]; then
-            # 处理 DOMAIN-SUFFIX 类型
             jq --arg value "$value" '.rules[0].domain_suffix += [$value]' BanAD.json > tmp.json && mv tmp.json BanAD.json
+          elif [[ "$type" == "DOMAIN" ]]; then
+            jq --arg value "$value" '.rules[0].domain += [$value]' BanAD.json > tmp.json && mv tmp.json BanAD.json
+          elif [[ "$type" == "IP-CIDR" ]]; then
+            jq --arg value "$value" '.rules[0].ip_cidr += [$value]' BanAD.json > tmp.json && mv tmp.json BanAD.json
           fi
         done < BanAD.list
 
@@ -54,24 +58,28 @@ jobs:
           "rules": [
             {
               "domain_keyword": [],
-              "domain_suffix": []
+              "domain_suffix": [],
+              "domain": [],
+              "ip_cidr": []
             }
           ]
         }' > BanProgramAD.json
 
         # 遍历 BanProgramAD.list 并填充 JSON
-        while IFS=, read -r type value; do
+        while IFS=, read -r type value extra; do
           # 去掉空行和注释行
           if [[ -z "$type" || "$type" == \#* ]]; then
             continue
           fi
 
           if [[ "$type" == "DOMAIN-KEYWORD" ]]; then
-            # 处理 DOMAIN-KEYWORD 类型
             jq --arg value "$value" '.rules[0].domain_keyword += [$value]' BanProgramAD.json > tmp.json && mv tmp.json BanProgramAD.json
           elif [[ "$type" == "DOMAIN-SUFFIX" ]]; then
-            # 处理 DOMAIN-SUFFIX 类型
             jq --arg value "$value" '.rules[0].domain_suffix += [$value]' BanProgramAD.json > tmp.json && mv tmp.json BanProgramAD.json
+          elif [[ "$type" == "DOMAIN" ]]; then
+            jq --arg value "$value" '.rules[0].domain += [$value]' BanProgramAD.json > tmp.json && mv tmp.json BanProgramAD.json
+          elif [[ "$type" == "IP-CIDR" ]]; then
+            jq --arg value "$value" '.rules[0].ip_cidr += [$value]' BanProgramAD.json > tmp.json && mv tmp.json BanProgramAD.json
           fi
         done < BanProgramAD.list
 
