@@ -1,9 +1,9 @@
-name: Convert and Update JSON
+name: Convert BanAD.list to JSON
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # 每天运行一次
+    - cron: '0 0 * * *'  # 每天运行一次
 
 jobs:
   convert:
@@ -13,15 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install jq (JSON processor)
-      run: sudo apt-get install -y jq
-
-    - name: Fetch and Convert
+    - name: Fetch BanAD.list
       run: |
         # 下载 BanAD.list 文件
         curl -s https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list -o BanAD.list
 
-        # 初始化 JSON 模板
+    - name: Convert to JSON
+      run: |
+        # 初始化 JSON 文件
         echo '{
           "rules": [
             {
@@ -32,20 +31,24 @@ jobs:
         }' > aa.json
 
         # 遍历 BanAD.list 并填充 JSON
-        while IFS= read -r line; do
-          if [[ "$line" =~ ^\|\| ]]; then
-            # 处理 || 开头的行，提取为 domain_suffix
-            domain=$(echo "$line" | sed 's/||//;s/\^.*//')
-            jq --arg domain "$domain" '.rules[0].domain_suffix += [$domain]' aa.json > tmp.json && mv tmp.json aa.json
-          elif [[ "$line" =~ ^@ ]]; then
-            # 处理 @ 开头的行，提取为 domain_keyword
-            domain=$(echo "$line" | sed 's/@//;s/\^.*//')
-            jq --arg domain "$domain" '.rules[0].domain_keyword += [$domain]' aa.json > tmp.json && mv tmp.json aa.json
+        while IFS=, read -r type value; do
+          # 去掉空行和注释行
+          if [[ -z "$type" || "$type" == \#* ]]; then
+            continue
+          fi
+
+          if [[ "$type" == "DOMAIN-KEYWORD" ]]; then
+            # 处理 DOMAIN-KEYWORD 类型
+            jq --arg value "$value" '.rules[0].domain_keyword += [$value]' aa.json > tmp.json && mv tmp.json aa.json
+          elif [[ "$type" == "DOMAIN-SUFFIX" ]]; then
+            # 处理 DOMAIN-SUFFIX 类型
+            jq --arg value "$value" '.rules[0].domain_suffix += [$value]' aa.json > tmp.json && mv tmp.json aa.json
           fi
         done < BanAD.list
 
     - name: Move JSON to Target Directory
       run: |
+        # 创建目标目录并移动文件
         mkdir -p singbox/rule/
         mv aa.json singbox/rule/aa.json
 
@@ -55,6 +58,6 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add singbox/rule/aa.json BanAD.list # 确保新文件被追踪
+        git add singbox/rule/aa.json
         git commit -m "Update aa.json with converted rules" || echo "No changes to commit"
         git push
