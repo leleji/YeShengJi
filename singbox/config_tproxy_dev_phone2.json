@@ -124,7 +124,7 @@
       { "tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs", "download_detour": "🎯 全球直连" },
       { "tag": "geoip-private", "type": "remote", "format": "binary", "url": "https://raw.gitmirror.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs", "download_detour": "🎯 全球直连" },
 
-      {"tag":"geosite-my","type":"remote","format":"source","url":"hhttps://raw.gitmirror.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myrule.json","download_detour":"🎯 全球直连"}
+      {"tag":"geosite-my","type":"remote","format":"source","url":"https://raw.gitmirror.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myrule.json","download_detour":"🎯 全球直连"}
     ]
   }
 }
