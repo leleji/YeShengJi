@@ -31,21 +31,23 @@ jobs:
           ]
         }' > aa.json
 
-        # 提取内容并转换
+        # 解析 BanAD.list 并填充模板
         while IFS= read -r line; do
           if [[ "$line" =~ ^\|\|.* ]]; then
-            domain=$(echo "$line" | sed 's/||//;s/^\.//;s/\^$//')
+            # 处理 || 开头的行，提取为 domain_suffix
+            domain=$(echo "$line" | sed 's/||//;s/\^$//')
             jq --arg domain "$domain" '.rules[0].domain_suffix += [$domain]' aa.json > tmp.json && mv tmp.json aa.json
           elif [[ "$line" =~ ^@.* ]]; then
-            domain=$(echo "$line" | sed 's/^@//;s/^\.//;s/\^$//')
+            # 处理 @ 开头的行，提取为 domain_keyword
+            domain=$(echo "$line" | sed 's/^@//;s/\^$//')
             jq --arg domain "$domain" '.rules[0].domain_keyword += [$domain]' aa.json > tmp.json && mv tmp.json aa.json
           fi
         done < BanAD.list
 
     - name: Move JSON to Target Directory
       run: |
-        mkdir -p YeShengJi/singbox/rule/
-        mv aa.json YeShengJi/singbox/rule/aa.json
+        mkdir -p singbox/rule/
+        mv aa.json singbox/rule/aa.json
 
     - name: Commit and Push Changes
       env:
@@ -53,6 +55,6 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add YeShengJi/singbox/rule/aa.json
+        git add singbox/rule/aa.json
         git commit -m "Update aa.json with converted rules"
         git push
