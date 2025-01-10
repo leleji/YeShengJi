@@ -122,10 +122,8 @@
       { "tag": "geoip-private", "type": "remote", "format": "binary", "url": "https://git.1999111.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs", "download_detour": "🎯 全球直连" },
       
       {"tag":"geosite-myrule","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myrule.json","download_detour":"🎯 全球直连"},
-      {"tag":"geosite-myproxy","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myproxy.json","download_detour":"🎯 全球直连"},
+      {"tag":"geosite-myproxy","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myproxy.json","download_detour":"🎯 全球直连"}
 
-      {"tag":"BanAD","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/BanAD.json","download_detour":"🎯 全球直连"},
-      {"tag":"BanProgramAD","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/BanProgramAD.json","download_detour":"🎯 全球直连"}
 
     ]
   }
