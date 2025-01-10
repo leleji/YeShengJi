@@ -595,7 +595,9 @@
         "go.10086.cn",
         "hivedata.cc",
         "navi.gd.chinamobile.com"
-      ]
+      ],
+      "domain": [],
+      "ip_cidr": []
     }
   ]
 }
