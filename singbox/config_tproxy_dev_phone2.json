@@ -119,9 +119,9 @@
       { "tag": "geoip-netflix", "type": "remote", "format": "binary", "url": "https://git.1999111.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs", "download_detour": "🎯 全球直连" },     
       { "tag": "geoip-apple", "type": "remote", "format": "binary", "url": "https://git.1999111.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs", "download_detour": "🎯 全球直连" },
       { "tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://git.1999111.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs", "download_detour": "🎯 全球直连" },
-      { "tag": "geoip-private", "type": "remote", "format": "binary", "url": "https://git.1999111.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs", "download_detour": "🎯 全球直连" }
+      { "tag": "geoip-private", "type": "remote", "format": "binary", "url": "https://git.1999111.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs", "download_detour": "🎯 全球直连" },
 
-      {"tag":"geosite-myrule","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myrule.json","download_detour":"🎯 全球直连"}
+      {"tag":"geosite-myrule","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myrule.json","download_detour":"🎯 全球直连"},
       {"tag":"geosite-myproxy","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myproxy.json","download_detour":"🎯 全球直连"}
     ]
   }
