@@ -52,7 +52,7 @@
 
   "outbounds": [
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": ["♻️ 自动选择", "🎯 全球直连","{all}"] },
-    { "tag": "🛜 Dns", "type": "selector", "outbounds": [""🚀 节点选择","{all}"] },
+    { "tag": "🛜 Dns", "type": "selector", "outbounds": ["🚀 节点选择","{all}"] },
     { "tag": "😄 我的设置", "type": "selector", "outbounds": ["🚀 节点选择","🎯 全球直连","{all}"] },
     { "tag": "🐒 强制代理", "type": "selector", "outbounds": ["🇹🇼 台湾节点","🚀 节点选择","🎯 全球直连","{all}"] },
     { "tag": "📹 YouTube", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择", "{all}"] },
