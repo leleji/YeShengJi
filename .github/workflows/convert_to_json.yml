@@ -1,4 +1,4 @@
-name: Convert BanAD.list and UnBan.list to JSON
+name: Convert BanAD.list and BanProgramAD.list to JSON
 
 on:
   workflow_dispatch:
@@ -15,9 +15,9 @@ jobs:
 
     - name: Fetch BanAD.list
       run: |
-        # 下载 BanAD.list 和 UnBan.list 文件
+        # 下载 BanAD.list 和 BanProgramAD.list 文件
         curl -s https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list -o BanAD.list
-        curl -s https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list -o UnBan.list
+        curl -s https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list -o BanProgramAD.list
 
     - name: Convert BanAD.list to JSON
       run: |
@@ -47,9 +47,9 @@ jobs:
           fi
         done < BanAD.list
 
-    - name: Convert UnBan.list to JSON
+    - name: Convert BanProgramAD.list to JSON
       run: |
-        # 初始化 UnBan.json 文件
+        # 初始化 BanProgramAD.json 文件
         echo '{
           "rules": [
             {
@@ -57,9 +57,9 @@ jobs:
               "domain_suffix": []
             }
           ]
-        }' > UnBan.json
+        }' > BanProgramAD.json
 
-        # 遍历 UnBan.list 并填充 JSON
+        # 遍历 BanProgramAD.list 并填充 JSON
         while IFS=, read -r type value; do
           # 去掉空行和注释行
           if [[ -z "$type" || "$type" == \#* ]]; then
@@ -68,19 +68,19 @@ jobs:
 
           if [[ "$type" == "DOMAIN-KEYWORD" ]]; then
             # 处理 DOMAIN-KEYWORD 类型
-            jq --arg value "$value" '.rules[0].domain_keyword += [$value]' UnBan.json > tmp.json && mv tmp.json UnBan.json
+            jq --arg value "$value" '.rules[0].domain_keyword += [$value]' BanProgramAD.json > tmp.json && mv tmp.json BanProgramAD.json
           elif [[ "$type" == "DOMAIN-SUFFIX" ]]; then
             # 处理 DOMAIN-SUFFIX 类型
-            jq --arg value "$value" '.rules[0].domain_suffix += [$value]' UnBan.json > tmp.json && mv tmp.json UnBan.json
+            jq --arg value "$value" '.rules[0].domain_suffix += [$value]' BanProgramAD.json > tmp.json && mv tmp.json BanProgramAD.json
           fi
-        done < UnBan.list
+        done < BanProgramAD.list
 
     - name: Move JSON to Target Directory
       run: |
         # 创建目标目录并移动文件
         mkdir -p singbox/rule/
         mv BanAD.json singbox/rule/BanAD.json
-        mv UnBan.json singbox/rule/UnBan.json
+        mv BanProgramAD.json singbox/rule/BanProgramAD.json
 
     - name: Commit and Push Changes
       env:
@@ -88,6 +88,6 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add singbox/rule/BanAD.json singbox/rule/UnBan.json
-        git commit -m "Update BanAD.json and UnBan.json with converted rules" || echo "No changes to commit"
+        git add singbox/rule/BanAD.json singbox/rule/BanProgramAD.json
+        git commit -m "Update BanAD.json and BanProgramAD.json with converted rules" || echo "No changes to commit"
         git push
