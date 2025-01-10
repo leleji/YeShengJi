@@ -82,6 +82,8 @@
      {"protocol": "dns", "action": "hijack-dns"},
      {"clash_mode": "direct", "outbound": "🎯 全球直连"},
      {"clash_mode": "global", "outbound": "GLOBAL"},
+     {"rule_set": "BanAD", "action": "reject"},
+     {"rule_set": "BanProgramAD", "action": "reject"},
      {"rule_set": "geosite-myrule", "outbound": "😄 我的设置"},
      {"rule_set": "geosite-myproxy", "outbound": "🐒 强制代理"},
      {"rule_set": "geosite-private", "outbound": "🎯 全球直连"},
@@ -122,7 +124,10 @@
       { "tag": "geoip-private", "type": "remote", "format": "binary", "url": "https://git.1999111.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs", "download_detour": "🎯 全球直连" },
       
       {"tag":"geosite-myrule","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myrule.json","download_detour":"🎯 全球直连"},
-      {"tag":"geosite-myproxy","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myproxy.json","download_detour":"🎯 全球直连"}
+      {"tag":"geosite-myproxy","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/myproxy.json","download_detour":"🎯 全球直连"},
+
+      {"tag":"BanAD","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/BanAD.json","download_detour":"🎯 全球直连"},
+      {"tag":"BanProgramAD","type":"remote","format":"source","url":"https://git.1999111.xyz/https://raw.githubusercontent.com/leleji/YeShengJi/refs/heads/master/singbox/rule/BanProgramAD.json","download_detour":"🎯 全球直连"}
 
     ]
   }
