@@ -6,7 +6,8 @@
                 "124.243.179.192/32"
             ],
             "domain": [
-                "tz.xiaoleji.pro"
+                "tz.xiaoleji.pro",
+                "p-hw-sg.xiaoleji.pro"
             ]
         }
     ]
