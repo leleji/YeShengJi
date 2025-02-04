@@ -3,12 +3,14 @@
     "rules": [
         {
             "ip_cidr": [
-                "124.243.179.192/32"
+                "124.243.179.192/32",
+                "166.108.239.82/32"
             ],
             "domain": [
                 "tz.xiaoleji.pro",
                 "p-hw-sg.xiaoleji.pro",
-                 "clipflow.1999111.xyz"
+                "clipflow.1999111.xyz",
+                "hw-sg-8.xiaoleji.pro"
             ]
         }
     ]
