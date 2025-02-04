@@ -66,6 +66,7 @@
    "final": "🐠 漏网之鱼",
    "rules": 
    [
+     {"network": "wifi","wifi": "乐鸡","outbound": "direct"},
      {"action": "sniff"},
      {"protocol": "dns", "action": "hijack-dns"},
      {"clash_mode": "direct", "outbound": "🎯 全球直连"},
