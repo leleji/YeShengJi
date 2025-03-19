@@ -2,8 +2,8 @@
 {
   "log": {
     "disabled": false,
-    "level": "info",
-    "output": "/root/box.log",
+    "level": "deb",
+    "output": "/etc/sing-box/box.log",
     "timestamp": true
   },
   
