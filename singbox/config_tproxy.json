@@ -76,6 +76,7 @@
  {
    "auto_detect_interface": true,
    "final": "🐠 漏网之鱼",
+   "default_mark": 666,
    "rules": 
    [
      {"action": "sniff"},
