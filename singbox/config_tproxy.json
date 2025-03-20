@@ -2,8 +2,7 @@
 {
   "log": {
     "disabled": false,
-    "level": "debug",
-    "output": "/root/box.log",
+    "level": "info",
     "timestamp": true
   },
   
