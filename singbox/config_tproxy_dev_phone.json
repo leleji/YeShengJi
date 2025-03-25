@@ -66,8 +66,7 @@
    "rules": 
    [
      {"wifi_ssid": "乐","outbound": "direct"},
-     {"action": "sniff"},
-     {"protocol": "dns", "action": "hijack-dns"},
+     {"type": "logical", "mode": "or", "rules": [{ "port": 53 }, { "protocol": "dns" }], "outbound": "dns-out" },
      {"clash_mode": "direct", "outbound": "🎯 全球直连"},
      {"clash_mode": "global", "outbound": "GLOBAL"},
      {"rule_set": "BanAD", "action": "reject"},
