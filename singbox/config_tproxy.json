@@ -67,7 +67,6 @@
     { "tag": "🍏 Apple", "type": "selector", "outbounds": ["🎯 全球直连","🚀 节点选择","{all}"] , "filter": [{ "action": "exclude", "keywords": ["网站|地址|剩余|过期|时间|有效"] }]},
     { "tag": "🐠 漏网之鱼", "type": "selector", "outbounds": ["🚀 节点选择","🎯 全球直连","{all}"] , "filter": [{ "action": "exclude", "keywords": ["网站|地址|剩余|过期|时间|有效"] }]},
     { "tag": "🇨🇳 台湾节点", "type": "selector", "outbounds": ["{all}"], "filter": [{ "action": "include", "keywords": ["🇹🇼|tw|TW|台湾"] }] },
-    {  "tag":"🔯 故障转移","type":"failover","interval":"30s","timeout":"3s","health_check":{"enable":true,"interval":"15s","timeout":"3s"},"outbounds":["{all}"],"filter":[{"action":"include","keywords":["厦港-CNF-SS", "香港-REALITY"]}]},
     { "tag": "♻️ 自动选择", "type": "urltest", "outbounds": ["{all}"], "filter": [{ "action": "exclude", "keywords": ["网站|地址|剩余|过期|时间|有效"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
     { "tag": "GLOBAL", "type": "selector", "outbounds": ["{all}"]},
     { "tag": "🎯 全球直连", "type": "direct" }
