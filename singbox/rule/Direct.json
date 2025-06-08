@@ -8,12 +8,14 @@
             ],
             "domain": [
                 "teamcdn-a.akamaihd.net",
-                "cm.steampowered.com",
-                "steamserver.net",
                 "tz.xiaoleji.pro",
                 "p-hw-sg.xiaoleji.pro",
                 "clipflow.1999111.xyz",
                 "hw-sg-8.xiaoleji.pro"
+            ],
+            "domain_suffix":[
+                "cm.steampowered.com",
+                "steamserver.net",
             ]
         }
     ]
