@@ -7,6 +7,9 @@
                 "166.108.239.82/32"
             ],
             "domain": [
+                "teamcdn-a.akamaihd.net",
+                "cm.steampowered.com",
+                "steamserver.net",
                 "tz.xiaoleji.pro",
                 "p-hw-sg.xiaoleji.pro",
                 "clipflow.1999111.xyz",
