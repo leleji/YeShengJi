@@ -85,7 +85,7 @@
      {"clash_mode": "global", "outbound": "GLOBAL"},
      {
       "domain": "steamcdn-a.akamaihd.net",
-      "outbound": "direct"  // 对应“全球直连”
+      "outbound": "direct"
       },
       {
         "domain_suffix": "cm.steampowered.com",
